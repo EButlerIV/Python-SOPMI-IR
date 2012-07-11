@@ -9,7 +9,7 @@ No POS tagging, no tokenization, no bells and whistles. This code only does Goog
 
 Accuracy
 --------
-Okay. It depends what you put in and what pre-screening has been done for words with no, limited, or ambiguous orientation. I should have a more substantial writeup about it soon.
+Okay. It depends what you put in and what pre-screening has been done for words with no, limited, or ambiguous orientation. I should type up a more substantial writeup about it soon.
 
 Warnings
 --------
