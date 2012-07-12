@@ -1,1 +1,0 @@
-{'testentry': 0, 'good': 539000000.0, 'debategood5': 280000000.0, 'bad': 214000000.0, 'debatenice5': 21900000.0, 'debatebad5': 276000000.0}

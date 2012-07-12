@@ -15,11 +15,10 @@ class MyOpener(FancyURLopener):
 
 myopener = MyOpener()
 
-dictFile = open('socache.txt', 'r+').read()
-
-if dictFile:
-  asaDict = eval(dictFile)
-else:
+try:
+  with open('socache.json', 'rb') as dictFile:
+    asaDict = json.load(dictFile)
+except:
   asaDict = {'testentry':0}
 
 print "asaDict: " + str(asaDict)
@@ -41,8 +40,8 @@ def doQuery(query, key):
     if resultCount < 1:
       resultCount += .01
     asaDict[key] = resultCount
-    dictFile = open('socache.txt', 'w')
-    dictFile.write(str(asaDict))
+    dictFile =  open('socache.json', 'w')
+    dictFile.write(json.dumps(asaDict))
     dictFile.close()
     return resultCount
   except:
@@ -51,6 +50,7 @@ def doQuery(query, key):
     print "sleeping for: %d seconds" % pauseDur
     time.sleep(pauseDur)
     return doQuery(query, key)
+
 
 def getNumberHits(word):
   cachedValue = cache(word)
@@ -75,10 +75,6 @@ def pmi(word, pword, nword, nearness):
   hitsNearNword = getNumberAround(word, nword, nearness)
   pwordHits = getNumberHits(pword)
   nwordHits = getNumberHits(nword)
-  print "aaaaaaa"
-  print hitsNearPword
-  print hitsNearNword
-  print  pwordHits
   result = math.log((hitsNearPword*nwordHits)/(hitsNearNword*pwordHits), 2)
   return result
 
